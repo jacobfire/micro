@@ -16,13 +16,21 @@ type retryRoundTripper struct {
 }
 
 func (rt *retryRoundTripper) RoundTripp(req *http.Request) (res *http.Response, err error) {
+	if !canRetryRequest(req) {
+		return rt.next.RoundTrip(req)
+	}
+
 	for attempts := 0; attempts < rt.maxRetries; attempts++ {
 		res, err = rt.next.RoundTrip(req)
 		if err == nil && res.StatusCode == http.StatusOK {
 			break
 		}
+	}
 
-		<-time.After(rt.delay)
+	select {
+	case <-req.Context().Done():
+		return res, req.Context().Err()
+	case <-time.After(rt.delay):
 	}
 
 	return
