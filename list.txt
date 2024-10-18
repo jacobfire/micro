@@ -1,0 +1,6 @@
+retry - just have a series of repeatable retries if we have not got a response after first time
+deadline and timeout - similar to retry but we have deadline
+hedge - if we have several instances of DB we send request on them for better performance and cancel requet if we got answer
+rate limit - we start limiting qty of requests if we have more than a threshold
+circuit breaker - we stop processing requests if we have a flood of request we cant process
+fullback
