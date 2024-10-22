@@ -1,0 +1,7 @@
+Creation of an application architecture that’s independently deployable and decentralized
+Massive scalability when and if needed
+New versions of microservices that can be rolled out incrementally, thus reducing downtime
+Detecting unwanted behavior before an old application version is completely replaced
+Use of multiple coding languages
+Prevention of systemic failure due to a root cause in an isolated component
+Real-time load balancing

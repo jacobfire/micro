@@ -4,3 +4,24 @@ hedge - if we have several instances of DB we send request on them for better pe
 rate limit - we start limiting qty of requests if we have more than a threshold
 circuit breaker - we stop processing requests if we have a flood of request we cant process
 fullback
+
+1. Database per service pattern
+2. Saga pattern
+
+two common approaches.
+
+a. Choreography:
+Using the choreography approach, a service will perform a transaction and then publish an event. In some instances, other services will respond to those published events and perform tasks according to their coded instructions. These secondary tasks may or may not also publish events, according to presets. In the example above, you could use a choreography approach so that each local e-commerce transaction publishes an event that triggers a local transaction in the credit service.
+
+b. Orchestration:
+An orchestration approach will perform transactions and publish events using an object to orchestrate the events, triggering other services to respond by completing their tasks. The orchestrator tells the participants what local transactions to execute.
+
+3. API gateway pattern
+4. Aggregator design pattern
+5. Circuit breaker design pattern
+6. Command query responsibility segregation (CQRS)
+7. Asynchronous messaging
+8. Event sourcing
+9. Strangler
+10. Decomposition patterns: a. Decomposition by business capability | b.Decomposition by subdomain | c.Decomposition by transaction
+
